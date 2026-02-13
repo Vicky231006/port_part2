@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicky Dsilva | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Vicky<span>.dev</span></a>
+            
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-icon" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" class="about-section">
+        <div class="container about-wrapper">
+            <div class="about-image">
+                <div class="img-placeholder">
+                    <img src="ppf.jpg" class="my-photo" alt="profile-pic">
+                </div>
+            </div>
+            <div class="about-content">
+                <h4 class="subtitle">Who I Am</h4>
+                <h2>Computer Engineering Student & <br> Full Stack Developer</h2>
+                <p>
+                    I am a B.Tech student at Fr. Conceicao Rodrigues College of Engineering with a CGPA of 9.6. 
+                    I specialize in building robust web applications using Python, Flask, and Django. 
+                    My passion lies in solving real-world problems through machine learning and intuitive UI design.
+                </p>
+                
+                <div class="skills-grid">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">Scikit-Learn</span>
+                </div>
+
+                <a href="#contact" class="btn">Let's Talk</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="card-image project-1-bg">
+                        <img src="fake.jpg" class="proj-cards" alt="proj-photo">
+                    </div>
+                    <div class="card-content">
+                        <h3>X Verifier</h3>
+                        <p>An authenticity checker for Twitter/X accounts using Machine Learning. It analyzes follower ratios and tweet activity to calculate trust indicators.</p>
+                        <div class="tech-stack">
+                            <small>Python</small>
+                            <small>Flask</small>
+                            <small>Tweepy</small>
+                        </div>
+                        <a href="https://github.com/Vicky231006/x_verifier/" class="card-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-image project-2-bg">
+                        <img src="phis.jpg" class="proj-cards" alt="proj-photo">
+                    </div>
+                    <div class="card-content">
+                        <h3>Phishing Email Detector</h3>
+                        <p>A security tool leveraging Random Forest Classifiers to identify malicious emails. Features a RESTful API for real-time analysis and URL reputation checking.</p>
+                        <div class="tech-stack">
+                            <small>Scikit-learn</small>
+                            <small>Flask</small>
+                            <small>API</small>
+                        </div>
+                        <a href="https://github.com/Vicky231006/netphishingtool" class="card-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-image project-3-bg">
+                        <img src="pdf-manipulator.png" class="proj-cards" alt="proj-photo">
+                    </div>
+                    <div class="card-content">
+                        <h3>PDF Manipulator</h3>
+                        <p>A full-featured web app allowing users to merge PDFs, convert images to PDF, and reorder pages with a drag-and-drop interface.</p>
+                        <div class="tech-stack">
+                            <small>PyPDF2</small>
+                            <small>Pillow</small>
+                            <small>HTML/JS</small>
+                        </div>
+                        <a href="https://pdfmanipulationwebsite.vercel.app/" class="card-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container contact-wrapper">
+            <h2 class="section-title">Get In Touch</h2>
+            <form action="https://formspree.io/f/maqdeqvk" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/vicky-dsilva-96a727294/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/Vicky231006"><i class="fa-brands fa-github"></i></a>
+            </div>
+            <p>&copy; 2026 Vicky Dsilva. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- toast notification -->
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-hidden="true">Message sent successfully</div>
+
+    <script>
+        // Submit contact form via fetch (works with Formspree) and show success/error toasts
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('.contact-form');
+            const toast = document.getElementById('toast');
+
+            if (!form || !toast) return;
+
+            function showToast(message, isError = false) {
+                toast.textContent = message;
+                toast.classList.toggle('error', !!isError);
+                toast.setAttribute('aria-hidden', 'false');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    toast.setAttribute('aria-hidden', 'true');
+                    if (isError) toast.classList.remove('error');
+                }, 3000);
+            }
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const action = form.action;
+                const method = (form.method || 'POST').toUpperCase();
+                const formData = new FormData(form);
+
+                // If no remote action is configured, just show local success
+                if (!action || action === '#') {
+                    form.reset();
+                    showToast('Message sent (local)');
+                    return;
+                }
+
+                try {
+                    const res = await fetch(action, {
+                        method,
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (res.ok) {
+                        form.reset();
+                        showToast('Message sent successfully');
+                    } else {
+                        const data = await res.json().catch(() => null);
+                        showToast((data && data.error) ? data.error : 'Error sending message', true);
+                    }
+                } catch (err) {
+                    showToast('Network error — try again', true);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
