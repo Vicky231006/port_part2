@@ -188,13 +188,21 @@
             form.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                // If running on port 5500 (Live Server), redirect API calls to port 5000
-                const apiBase = window.location.port === '5500' ? 'http://localhost:5000' : '';
-                const action = apiBase + form.getAttribute('action');
+                // Build the API URL. In local development, always ensure it hits port 5000.
+                let action = form.getAttribute('action');
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    action = `http://localhost:5000${action.startsWith('/') ? '' : '/'}${action}`;
+                }
+
+                console.log('Submitting to:', action);
 
                 const method = (form.method || 'POST').toUpperCase();
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
+
+                console.log('--- FORM SUBMISSION START ---');
+                console.log('URL:', action);
+                console.log('Payload:', data);
 
                 try {
                     const res = await fetch(action, {
@@ -206,16 +214,21 @@
                         }
                     });
 
+                    console.log('Response Status:', res.status);
+                    const resData = await res.json().catch(() => null);
+                    console.log('Response Data:', resData);
+
                     if (res.ok) {
                         form.reset();
-                        showToast('Message sent successfully');
+                        showToast('Message sent successfully!');
                     } else {
-                        const resData = await res.json().catch(() => null);
                         showToast((resData && resData.error) ? resData.error : 'Error sending message', true);
                     }
                 } catch (err) {
-                    showToast('Network error — try again', true);
+                    console.error('Fetch Error:', err);
+                    showToast('Network error — check console', true);
                 }
+                console.log('--- FORM SUBMISSION END ---');
             });
         });
     </script>

@@ -8,12 +8,20 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
-// Serve static files from the current directory
 app.use(express.static(path.join(__dirname)));
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI).then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log('MongoDB connection error:', err));
+// Global request logger
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+});
+
+mongoose.connect(process.env.MONGODB_URI).then(() => {
+    console.log('MongoDB Connected Successfully');
+    console.log('Database Name:', mongoose.connection.name);
+    console.log('Host:', mongoose.connection.host);
+}).catch(err => console.error('CRITICAL: MongoDB connection error:', err));
 
 const ContactSchema = new mongoose.Schema({
     name: String,
@@ -21,16 +29,18 @@ const ContactSchema = new mongoose.Schema({
     email: String,
     message: String,
     date: { type: Date, default: Date.now }
-});
+}, { collection: 'user_info_fsd_1' });
 
 const Contact = mongoose.model('Contact', ContactSchema);
 
 // Endpoint to handle form submission
 app.post('/api/contact', async (req, res) => {
+    console.log('Received Form Submission:', req.body);
     try {
         const { name, mobile, email, message } = req.body;
         const newContact = new Contact({ name, mobile, email, message });
-        await newContact.save();
+        const savedContact = await newContact.save();
+        console.log('Successfully saved to DB:', savedContact);
         res.status(200).json({ success: true, message: 'Message saved successfully' });
     } catch (err) {
         console.error('Error saving contact:', err);
