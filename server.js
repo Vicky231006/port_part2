@@ -10,6 +10,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.static(path.join(__dirname)));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Global request logger
 app.use((req, res, next) => {
