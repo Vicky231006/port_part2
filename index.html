@@ -188,7 +188,10 @@
             form.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                const action = form.action;
+                // If running on port 5500 (Live Server), redirect API calls to port 5000
+                const apiBase = window.location.port === '5500' ? 'http://localhost:5000' : '';
+                const action = apiBase + form.getAttribute('action');
+
                 const method = (form.method || 'POST').toUpperCase();
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
