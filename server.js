@@ -12,11 +12,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname)));
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log('MongoDB connection error:', err));
+mongoose.connect(process.env.MONGODB_URI).then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log('MongoDB connection error:', err));
 
 const ContactSchema = new mongoose.Schema({
     name: String,
@@ -42,7 +39,7 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // For any other route, send the index.html file
-app.get('*', (req, res) => {
+app.get(/^(?!\/api).+/, (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
